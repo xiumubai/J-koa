@@ -1,5 +1,6 @@
 const Koa = require('./koa')
 const Router = require('./router')
+const static = require('./static')
 const app = new Koa()
 const router = new Router()
 // app.use((req, res) => {
@@ -52,6 +53,7 @@ router.post('/index', async (ctx) => {
 })
 
 app.use(router.routes())
+app.use(static(__dirname + '/public'))
 
 app.listen(3000, () => {
   console.log('app server is running in 3000!')

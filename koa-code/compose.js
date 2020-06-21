@@ -1,0 +1,19 @@
+const add = (x, y) => x + y
+const square = (z) => z * z
+
+// const fn = (x, y) => square(add(x, y))
+
+// const compose = (fn1, fn2) => (...args) => fn2(fn1(...args))
+// const fn = compose(add, square)
+
+const compose = (...[first, ...other]) => (...args) => {
+  let ret = first(...args)
+  other.forEach((fn) => {
+    console.log(fn)
+    ret = fn(ret)
+  })
+  return ret
+}
+const fn = compose(add, square, square)
+
+console.log(fn(1, 2))

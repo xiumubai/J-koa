@@ -1,9 +1,14 @@
 const Koa = require('./koa')
 const app = new Koa()
-app.use((req, res) => {
-  console.log(req, res)
-  res.writeHead(200)
-  res.end('Hi koa!')
+// app.use((req, res) => {
+//   console.log(req, res)
+//   res.writeHead(200)
+//   res.end('Hi koa!')
+// })
+
+app.use((ctx) => {
+  console.log(ctx.body)
+  ctx.body = 'Hi koa!'
 })
 
 app.listen(3000, () => {
